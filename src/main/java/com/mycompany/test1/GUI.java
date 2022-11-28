@@ -35,12 +35,13 @@ public class GUI extends javax.swing.JFrame {
         lblPass = new javax.swing.JLabel();
         txtboxSite = new javax.swing.JTextField();
         txtboxUser = new javax.swing.JTextField();
-        txtboxPass = new javax.swing.JTextField();
         chkLowerCase = new javax.swing.JCheckBox();
         chkUpperCase = new javax.swing.JCheckBox();
         chkNumbers = new javax.swing.JCheckBox();
         chkSymbol = new javax.swing.JCheckBox();
         btnGenerate = new javax.swing.JButton();
+        txtboxPass = new javax.swing.JPasswordField();
+        see = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -73,6 +74,19 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
+        txtboxPass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtboxPassActionPerformed(evt);
+            }
+        });
+
+        see.setText("👁");
+        see.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                seeActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -87,9 +101,11 @@ public class GUI extends javax.swing.JFrame {
                             .addComponent(lblPass, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(74, 74, 74)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtboxUser, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
+                            .addComponent(txtboxUser, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
                             .addComponent(txtboxSite)
-                            .addComponent(txtboxPass)))
+                            .addComponent(txtboxPass))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(see))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(21, 21, 21)
                         .addComponent(chkLowerCase, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -102,7 +118,7 @@ public class GUI extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(157, 157, 157)
                         .addComponent(btnGenerate)))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -115,11 +131,12 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblUser)
                     .addComponent(txtboxUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPass)
-                    .addComponent(txtboxPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
+                    .addComponent(txtboxPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(see))
+                .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(chkLowerCase)
                     .addComponent(chkUpperCase)
@@ -146,25 +163,68 @@ public class GUI extends javax.swing.JFrame {
       PasswordGenerator passwordGenerator = new PasswordGenerator();
       
         
-      String password = "";
-      
-      if (chkUpperCase.isSelected()& chkNumbers.isSelected() & chkSymbol.isSelected()){ // no lowercase 
-      password = passwordGenerator.generatePassword(16, uppercase, digits, special);
-      } else if (chkLowerCase.isSelected() & chkNumbers.isSelected() & chkSymbol.isSelected()){ // no no uppercase
-      password = passwordGenerator.generatePassword(16, lowercase, digits, special);
-      } else if(chkLowerCase.isSelected() & chkUpperCase.isSelected() & chkSymbol.isSelected()){ // no numbers
-      password = passwordGenerator.generatePassword(16, lowercase, uppercase, special);    
-      } else  if(chkLowerCase.isSelected() & chkUpperCase.isSelected()& chkNumbers.isSelected()){ // no symbols
-      password = passwordGenerator.generatePassword(16, lowercase,uppercase, digits);
-      } else {
-      password = passwordGenerator.generatePassword(16, lowercase,uppercase, digits, special);
-      }
-          
-      
-     StringSelection stringSelectionObj = new StringSelection(password);
-    Clipboard clipboardObj = Toolkit.getDefaultToolkit().getSystemClipboard();
-    clipboardObj.setContents(stringSelectionObj, null);
+      String password;
+
+        password = getPassword(lowercase, uppercase, digits, special, passwordGenerator);
+
+        StringSelection stringSelectionObj = new StringSelection(password);
+        Clipboard clipboardObj = Toolkit.getDefaultToolkit().getSystemClipboard();
+        clipboardObj.setContents(stringSelectionObj, null);
+        
+        txtboxPass.setText(password);
     }//GEN-LAST:event_btnGenerateActionPerformed
+
+    private void txtboxPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtboxPassActionPerformed
+        
+    }//GEN-LAST:event_txtboxPassActionPerformed
+
+    private void seeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seeActionPerformed
+            if (see.isSelected()){
+                txtboxPass.setEchoChar((char)0); 
+            } else
+                txtboxPass.setEchoChar('*');
+
+                
+               
+    }//GEN-LAST:event_seeActionPerformed
+
+    private String getPassword(CharacterRule lowercase, CharacterRule uppercase, CharacterRule digits, CharacterRule special, PasswordGenerator passwordGenerator) {
+        String password;
+        if (chkUpperCase.isSelected()& chkNumbers.isSelected() & chkSymbol.isSelected()){ // no lowercase
+            password = passwordGenerator.generatePassword(16, uppercase, digits, special);
+
+        } else if (chkLowerCase.isSelected() & chkNumbers.isSelected() & chkSymbol.isSelected()){ // no no uppercase
+            password = passwordGenerator.generatePassword(16, lowercase, digits, special);
+
+        } else if(chkLowerCase.isSelected() & chkUpperCase.isSelected() & chkSymbol.isSelected()){ // no numbers
+            password = passwordGenerator.generatePassword(16, lowercase, uppercase, special);
+
+        } else  if(chkLowerCase.isSelected() & chkUpperCase.isSelected()& chkNumbers.isSelected()){ // no symbols
+            password = passwordGenerator.generatePassword(16, lowercase, uppercase, digits);
+
+        } else if (chkNumbers.isSelected() & chkSymbol.isSelected()) { // no letters
+            password = passwordGenerator.generatePassword(16, special, digits);
+
+        } else if (chkUpperCase.isSelected() & chkLowerCase.isSelected()) { // letters only
+            password = passwordGenerator.generatePassword(16, lowercase, uppercase);
+
+        } else if (chkLowerCase.isSelected() & chkNumbers.isSelected()) { //  lowercase and number
+            password = passwordGenerator.generatePassword(16, lowercase, digits);
+
+        } else if (chkLowerCase.isSelected() & chkSymbol.isSelected()) { //  lowercase and special
+            password = passwordGenerator.generatePassword(16, lowercase, special);
+
+        } else if (chkUpperCase.isSelected() & chkNumbers.isSelected()) { // uppercase and number
+            password = passwordGenerator.generatePassword(16, uppercase, digits);
+
+        } else if (chkUpperCase.isSelected() & chkSymbol.isSelected()) { //  uppercase and special
+            password = passwordGenerator.generatePassword(16, uppercase, special);
+
+        } else {
+        password = passwordGenerator.generatePassword(16, lowercase, uppercase, digits, special);
+        }
+        return password;
+    }
 
     /**
      * @param args the command line arguments
@@ -173,7 +233,7 @@ public class GUI extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -210,7 +270,8 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel lblPass;
     private javax.swing.JLabel lblSite;
     private javax.swing.JLabel lblUser;
-    private javax.swing.JTextField txtboxPass;
+    private javax.swing.JToggleButton see;
+    private javax.swing.JPasswordField txtboxPass;
     private javax.swing.JTextField txtboxSite;
     private javax.swing.JTextField txtboxUser;
     // End of variables declaration//GEN-END:variables
