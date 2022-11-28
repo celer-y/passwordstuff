@@ -43,17 +43,20 @@ public class GUI extends javax.swing.JFrame {
         txtboxSite = new javax.swing.JTextField();
         txtboxUser = new javax.swing.JTextField();
         chkLowerCase = new javax.swing.JCheckBox();
+        btnCopy = new javax.swing.JButton();
+        lblPass1 = new javax.swing.JLabel();
+        jSpinner1 = new javax.swing.JSpinner();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 204, 204));
+        jPanel1.setBackground(new java.awt.Color(255, 153, 153));
 
-        chkUpperCase.setText("A-Z");
+        chkUpperCase.setText("Uppercase A-Z");
 
-        chkNumbers.setText("0-9");
+        chkNumbers.setText("Digits 0-9");
         chkNumbers.setToolTipText("");
 
-        chkSymbol.setText("#@&");
+        chkSymbol.setText("Symbols #@&");
         chkSymbol.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkSymbolActionPerformed(evt);
@@ -74,7 +77,7 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        lblSite.setFont(new java.awt.Font("SimSun", 0, 18)); // NOI18N
+        lblSite.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
         lblSite.setText("Site");
         lblSite.setName(""); // NOI18N
 
@@ -85,131 +88,161 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        lblUser.setFont(new java.awt.Font("SimSun", 0, 18)); // NOI18N
+        lblUser.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
         lblUser.setText("Username");
 
-        lblPass.setFont(new java.awt.Font("SimSun", 0, 18)); // NOI18N
+        lblPass.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
         lblPass.setText("Password");
 
-        chkLowerCase.setText("a-z");
+        chkLowerCase.setText("Lowercase a-z");
+        chkLowerCase.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkLowerCaseActionPerformed(evt);
+            }
+        });
+
+        btnCopy.setText("Copy");
+        btnCopy.setToolTipText("");
+        btnCopy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCopyActionPerformed(evt);
+            }
+        });
+
+        lblPass1.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
+        lblPass1.setText("Password Length");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(30, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(40, 40, 40)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(lblSite, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(65, 65, 65))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(lblUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(lblPass, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(61, 61, 61)))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtboxUser)
-                            .addComponent(txtboxSite)
-                            .addComponent(txtboxPass, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(see))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(chkLowerCase, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(chkUpperCase, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(chkNumbers, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(chkSymbol, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(136, 136, 136)
-                        .addComponent(btnGenerate)))
-                .addGap(19, 19, 19))
+                    .addComponent(lblUser)
+                    .addComponent(lblPass)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(txtboxUser, javax.swing.GroupLayout.DEFAULT_SIZE, 332, Short.MAX_VALUE)
+                        .addComponent(lblSite, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtboxSite))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(txtboxPass, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(see))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(lblPass1)
+                                    .addGap(18, 18, 18)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(chkNumbers, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(chkSymbol))))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(btnGenerate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnCopy, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(chkUpperCase)
+                                .addComponent(chkLowerCase, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(227, 227, 227))))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtboxSite, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblSite))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtboxUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblUser))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(25, 25, 25)
+                .addComponent(lblSite)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtboxSite, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lblUser)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtboxUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lblPass)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtboxPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(see)
-                    .addComponent(lblPass))
+                    .addComponent(btnCopy))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(chkLowerCase)
+                    .addComponent(lblPass1)
+                    .addComponent(btnGenerate)
+                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(chkUpperCase)
-                    .addComponent(chkNumbers)
+                    .addComponent(chkNumbers))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(chkLowerCase)
                     .addComponent(chkSymbol))
-                .addGap(35, 35, 35)
-                .addComponent(btnGenerate)
-                .addContainerGap(72, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void chkSymbolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkSymbolActionPerformed
+    private void chkLowerCaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkLowerCaseActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_chkSymbolActionPerformed
+    }//GEN-LAST:event_chkLowerCaseActionPerformed
+
+    private void seeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seeActionPerformed
+        if (see.isSelected()){
+            txtboxPass.setEchoChar((char)0);
+        } else
+        txtboxPass.setEchoChar('*');
+
+    }//GEN-LAST:event_seeActionPerformed
+
+    private void txtboxPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtboxPassActionPerformed
+
+    }//GEN-LAST:event_txtboxPassActionPerformed
 
     private void btnGenerateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerateActionPerformed
-      CharacterRule lowercase = new CharacterRule(EnglishCharacterData.LowerCase);
-      CharacterRule uppercase = new CharacterRule(EnglishCharacterData.UpperCase);
-      CharacterRule digits = new CharacterRule(EnglishCharacterData.Digit);
-      CharacterRule special = new CharacterRule(EnglishCharacterData.Special);
+        CharacterRule lowercase = new CharacterRule(EnglishCharacterData.LowerCase);
+        CharacterRule uppercase = new CharacterRule(EnglishCharacterData.UpperCase);
+        CharacterRule digits = new CharacterRule(EnglishCharacterData.Digit);
+        CharacterRule special = new CharacterRule(EnglishCharacterData.Special);
 
-      PasswordGenerator passwordGenerator = new PasswordGenerator();
-      
-        
-      String password;
+        PasswordGenerator passwordGenerator = new PasswordGenerator();
+
+        String password;
 
         password = getPassword(lowercase, uppercase, digits, special, passwordGenerator);
 
         StringSelection stringSelectionObj = new StringSelection(password);
         Clipboard clipboardObj = Toolkit.getDefaultToolkit().getSystemClipboard();
         clipboardObj.setContents(stringSelectionObj, null);
-        
+
         txtboxPass.setText(password);
     }//GEN-LAST:event_btnGenerateActionPerformed
 
-    private void txtboxPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtboxPassActionPerformed
-        
-    }//GEN-LAST:event_txtboxPassActionPerformed
+    private void chkSymbolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkSymbolActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chkSymbolActionPerformed
 
-    private void seeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seeActionPerformed
-            if (see.isSelected()){
-                txtboxPass.setEchoChar((char)0); 
-            } else
-                txtboxPass.setEchoChar('*');
-
-                
-               
-    }//GEN-LAST:event_seeActionPerformed
+    private void btnCopyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCopyActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCopyActionPerformed
 
     private String getPassword(CharacterRule lowercase, CharacterRule uppercase, CharacterRule digits, CharacterRule special, PasswordGenerator passwordGenerator) {
         String password;
@@ -285,13 +318,16 @@ public class GUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCopy;
     private javax.swing.JButton btnGenerate;
     private javax.swing.JCheckBox chkLowerCase;
     private javax.swing.JCheckBox chkNumbers;
     private javax.swing.JCheckBox chkSymbol;
     private javax.swing.JCheckBox chkUpperCase;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JSpinner jSpinner1;
     private javax.swing.JLabel lblPass;
+    private javax.swing.JLabel lblPass1;
     private javax.swing.JLabel lblSite;
     private javax.swing.JLabel lblUser;
     private javax.swing.JToggleButton see;
