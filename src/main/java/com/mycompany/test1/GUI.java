@@ -49,7 +49,7 @@ public class GUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 153, 153));
+
 
         chkUpperCase.setText("Uppercase A-Z");
 
@@ -227,7 +227,12 @@ public class GUI extends javax.swing.JFrame {
 
         String password;
 
-        password = getPassword(lowercase, uppercase, digits, special, passwordGenerator);
+        int passLength = 16;
+
+        passLength = (Integer) jSpinner1.getValue();
+        password = getPassword(lowercase, uppercase, digits, passLength, special, passwordGenerator);
+
+        passLength = (Integer) jSpinner1.getValue();
 
         StringSelection stringSelectionObj = new StringSelection(password);
         Clipboard clipboardObj = Toolkit.getDefaultToolkit().getSystemClipboard();
@@ -244,40 +249,40 @@ public class GUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCopyActionPerformed
 
-    private String getPassword(CharacterRule lowercase, CharacterRule uppercase, CharacterRule digits, CharacterRule special, PasswordGenerator passwordGenerator) {
+    private String getPassword(CharacterRule lowercase, CharacterRule uppercase, CharacterRule digits, int passLength, CharacterRule special, PasswordGenerator passwordGenerator) {
         String password;
         if (chkUpperCase.isSelected()& chkNumbers.isSelected() & chkSymbol.isSelected()){ // no lowercase
-            password = passwordGenerator.generatePassword(16, uppercase, digits, special);
+            password = passwordGenerator.generatePassword(passLength, uppercase, digits, special);
 
         } else if (chkLowerCase.isSelected() & chkNumbers.isSelected() & chkSymbol.isSelected()){ // no no uppercase
-            password = passwordGenerator.generatePassword(16, lowercase, digits, special);
+            password = passwordGenerator.generatePassword(passLength, lowercase, digits, special);
 
         } else if(chkLowerCase.isSelected() & chkUpperCase.isSelected() & chkSymbol.isSelected()){ // no numbers
-            password = passwordGenerator.generatePassword(16, lowercase, uppercase, special);
+            password = passwordGenerator.generatePassword(passLength, lowercase, uppercase, special);
 
         } else  if(chkLowerCase.isSelected() & chkUpperCase.isSelected()& chkNumbers.isSelected()){ // no symbols
-            password = passwordGenerator.generatePassword(16, lowercase, uppercase, digits);
+            password = passwordGenerator.generatePassword(passLength, lowercase, uppercase, digits);
 
         } else if (chkNumbers.isSelected() & chkSymbol.isSelected()) { // no letters
-            password = passwordGenerator.generatePassword(16, special, digits);
+            password = passwordGenerator.generatePassword(passLength, special, digits);
 
         } else if (chkUpperCase.isSelected() & chkLowerCase.isSelected()) { // letters only
-            password = passwordGenerator.generatePassword(16, lowercase, uppercase);
+            password = passwordGenerator.generatePassword(passLength, lowercase, uppercase);
 
         } else if (chkLowerCase.isSelected() & chkNumbers.isSelected()) { //  lowercase and number
-            password = passwordGenerator.generatePassword(16, lowercase, digits);
+            password = passwordGenerator.generatePassword(passLength, lowercase, digits);
 
         } else if (chkLowerCase.isSelected() & chkSymbol.isSelected()) { //  lowercase and special
-            password = passwordGenerator.generatePassword(16, lowercase, special);
+            password = passwordGenerator.generatePassword(passLength, lowercase, special);
 
         } else if (chkUpperCase.isSelected() & chkNumbers.isSelected()) { // uppercase and number
-            password = passwordGenerator.generatePassword(16, uppercase, digits);
+            password = passwordGenerator.generatePassword(passLength, uppercase, digits);
 
         } else if (chkUpperCase.isSelected() & chkSymbol.isSelected()) { //  uppercase and special
-            password = passwordGenerator.generatePassword(16, uppercase, special);
+            password = passwordGenerator.generatePassword(passLength, uppercase, special);
 
         } else {
-        password = passwordGenerator.generatePassword(16, lowercase, uppercase, digits, special);
+        password = passwordGenerator.generatePassword(passLength, lowercase, uppercase, digits, special);
         }
         return password;
     }
