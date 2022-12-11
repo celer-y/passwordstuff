@@ -9,10 +9,13 @@ import com.formdev.flatlaf.intellijthemes.FlatNordIJTheme;
 import java.awt.EventQueue;
 import javax.swing.UIManager;
 
+
+
 public class Test1 {
 
-      public static void main(String args[]) {
 
+
+      public static void main(String args[]) {
 
 
           try {
@@ -27,7 +30,9 @@ public class Test1 {
                         new GUI().setVisible(true);
                   }
             });
+
       }
+
 }
 
 
