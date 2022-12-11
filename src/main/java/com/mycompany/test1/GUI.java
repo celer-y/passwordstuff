@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package com.mycompany.test1;
 
 import org.passay.CharacterRule;
@@ -17,13 +13,19 @@ import jssc.SerialPortException;
 
 import java.sql.*;
 
-public class GUI extends javax.swing.JFrame {
+import javax.swing.*;
 
+public class GUI extends javax.swing.JFrame {
+    
+
+SerialPort serialPort = new SerialPort("COM10");
+    
     /**
      * Creates new form GUI
      */
     public GUI() {
         initComponents();
+        jPanel2.setVisible(false);
     }
 
     /**
@@ -36,6 +38,7 @@ public class GUI extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
         chkUpperCase = new javax.swing.JCheckBox();
         chkNumbers = new javax.swing.JCheckBox();
         chkSymbol = new javax.swing.JCheckBox();
@@ -51,9 +54,25 @@ public class GUI extends javax.swing.JFrame {
         btnCopy = new javax.swing.JButton();
         lblPass1 = new javax.swing.JLabel();
         jSpinner1 = new javax.swing.JSpinner();
+        jPanel2 = new javax.swing.JPanel();
+        see1 = new javax.swing.JToggleButton();
+        jLabel1 = new javax.swing.JLabel();
+        btnLoadPassword = new javax.swing.JButton();
+        btnLoadPassword1 = new javax.swing.JButton();
+        btnLoadPassword3 = new javax.swing.JButton();
+        txtWebsite = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        txtPassword2 = new javax.swing.JPasswordField();
+        btnLoadPassword4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         chkUpperCase.setText("Uppercase A-Z");
 
@@ -97,6 +116,12 @@ public class GUI extends javax.swing.JFrame {
 
         lblPass.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
         lblPass.setText("Password");
+
+        txtboxSite.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtboxSiteActionPerformed(evt);
+            }
+        });
 
         chkLowerCase.setText("Lowercase a-z");
         chkLowerCase.addActionListener(new java.awt.event.ActionListener() {
@@ -153,8 +178,10 @@ public class GUI extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(chkLowerCase, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(chkUpperCase))
-                                .addGap(227, 227, 227)))))
-                .addContainerGap(41, Short.MAX_VALUE))
+                                .addGap(227, 227, 227)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -188,20 +215,130 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(chkLowerCase)
                     .addComponent(chkSymbol))
                 .addContainerGap(17, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addContainerGap())
+        );
+
+        jPanel2.setPreferredSize(new java.awt.Dimension(416, 322));
+
+        see1.setText("👁");
+        see1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                see1ActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Website");
+
+        btnLoadPassword.setText("Generate");
+        btnLoadPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoadPasswordActionPerformed(evt);
+            }
+        });
+
+        btnLoadPassword1.setText("Back");
+        btnLoadPassword1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoadPassword1ActionPerformed(evt);
+            }
+        });
+
+        btnLoadPassword3.setText("Delete Data");
+        btnLoadPassword3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoadPassword3ActionPerformed(evt);
+            }
+        });
+
+        txtWebsite.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtWebsiteActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("Password");
+
+        btnLoadPassword4.setText("Copy");
+        btnLoadPassword4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoadPassword4ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(77, 77, 77)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel1))
+                        .addGap(29, 29, 29)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtWebsite, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(txtPassword2, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(see1))))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                            .addComponent(btnLoadPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnLoadPassword3))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                            .addComponent(btnLoadPassword4, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(32, 32, 32)
+                            .addComponent(btnLoadPassword1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(90, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(69, 69, 69)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(txtWebsite, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(see1)
+                    .addComponent(txtPassword2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnLoadPassword3)
+                    .addComponent(btnLoadPassword))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnLoadPassword4)
+                    .addComponent(btnLoadPassword1))
+                .addContainerGap(80, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         pack();
@@ -234,6 +371,8 @@ public class GUI extends javax.swing.JFrame {
         String password;
 
         int passLength = 16;
+        String website = txtboxSite.getText();
+        String username = txtboxUser.getText();
 
         passLength = (Integer) jSpinner1.getValue();
         password = getPassword(lowercase, uppercase, digits, passLength, special, passwordGenerator);
@@ -246,7 +385,7 @@ public class GUI extends javax.swing.JFrame {
 
         txtboxPass.setText(password);
 
-        SerialPort serialPort = new SerialPort("COM10");
+        // SerialPort serialPort = new SerialPort("COM10");
 
         try {
             serialPort.openPort();
@@ -261,6 +400,18 @@ public class GUI extends javax.swing.JFrame {
             e.printStackTrace();
         }
 
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbpass", "root", "root");
+            PreparedStatement pst = connection.prepareStatement("insert into info(WebSite,UserName,GeneratedPassword)values(?,?,?)");
+
+            pst.setString(1, website);
+            pst.setString(2, username);
+            pst.setString(3, password);
+            pst.executeUpdate();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_btnGenerateActionPerformed
 
     private void chkSymbolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkSymbolActionPerformed
@@ -271,11 +422,122 @@ public class GUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCopyActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        jPanel1.setVisible(false);
+        jPanel2.setVisible(true);
+       
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    
+    public class Function{
+       Connection con = null;
+       ResultSet rs = null;
+       PreparedStatement ps = null;
+       public ResultSet find(String s){
+           try{
+           con = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbpass","root","root");
+           ps = con.prepareStatement("select * from info where WebSite = ? ");
+           ps.setString(1,s);
+           rs = ps.executeQuery();
+           }catch(Exception ex){
+                ex.printStackTrace();
+           }
+           return rs;
+       }
+    }
+    
+    private void btnLoadPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoadPasswordActionPerformed
+    Function f = new Function();
+    ResultSet rs = null;
+    String fn = "fname";
+    String ln = "lname";
+    String ag = "GeneratedPassword";
+    String pass3 = String.valueOf(txtPassword2.getPassword());
+    rs = f.find(txtWebsite.getText());
+    try{
+      if(rs.next()){
+          txtPassword2.setText(rs.getString("GeneratedPassword"));
+      }  else{
+          JOptionPane.showMessageDialog(null, "No password saved in this website");
+      }
+    }catch(Exception ex){
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+            }
+    
+    try {
+            serialPort.openPort();
+            serialPort.setParams(9600, 8, 1, 0);
+        } catch (SerialPortException e) {
+            e.printStackTrace();
+        }
+       
+        try {
+            serialPort.writeString(pass3);
+        } catch (SerialPortException e) {
+            e.printStackTrace();
+        }
+    
+    }//GEN-LAST:event_btnLoadPasswordActionPerformed
+
+    private void btnLoadPassword1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoadPassword1ActionPerformed
+        jPanel2.setVisible(false);
+        jPanel1.setVisible(true);
+    }//GEN-LAST:event_btnLoadPassword1ActionPerformed
+  
+    private void btnLoadPassword3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoadPassword3ActionPerformed
+
+        String deleteWebsite = txtWebsite.getText();
+        
+        try {
+            Connection deleteAction = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbpass","root","root");
+                  
+            String query= "DELETE FROM info WHERE WebSite = ? ";
+            PreparedStatement preparedStatement = deleteAction.prepareStatement(query);
+            preparedStatement.setString(1,deleteWebsite);
+            preparedStatement.executeUpdate();
+            
+
+
+            } catch (Exception e){
+                e.printStackTrace();
+
+            }
+        
+        
+    }//GEN-LAST:event_btnLoadPassword3ActionPerformed
+
+    private void see1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_see1ActionPerformed
+        if (see1.isSelected()){
+            txtPassword2.setEchoChar((char)0);
+        } else
+        txtPassword2.setEchoChar('*');
+
+    }//GEN-LAST:event_see1ActionPerformed
+
+    private void txtWebsiteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtWebsiteActionPerformed
+
+    }//GEN-LAST:event_txtWebsiteActionPerformed
+
+    private void btnLoadPassword4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoadPassword4ActionPerformed
+        String pass2=String.valueOf(txtPassword2.getPassword());
+        StringSelection stringSelectionObj = new StringSelection(pass2);
+        Clipboard clipboardObj = Toolkit.getDefaultToolkit().getSystemClipboard();
+        clipboardObj.setContents(stringSelectionObj, null);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnLoadPassword4ActionPerformed
+
+    private void txtboxSiteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtboxSiteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtboxSiteActionPerformed
+
     private String getPassword(CharacterRule lowercase, CharacterRule uppercase, CharacterRule digits, int passLength, CharacterRule special, PasswordGenerator passwordGenerator) {
         String password;
-        if (chkUpperCase.isSelected()& chkNumbers.isSelected() & chkSymbol.isSelected()){ // no lowercase
+        
+        if (chkNumbers.isSelected() & !chkUpperCase.isSelected() & !chkLowerCase.isSelected()& !chkSymbol.isSelected()){
+            password = passwordGenerator.generatePassword(passLength, digits);  // numbers only
+        } else if (chkUpperCase.isSelected()& chkNumbers.isSelected() & chkSymbol.isSelected()){ // no lowercase
             password = passwordGenerator.generatePassword(passLength, uppercase, digits, special);
-
+            
         } else if (chkLowerCase.isSelected() & chkNumbers.isSelected() & chkSymbol.isSelected()){ // no no uppercase
             password = passwordGenerator.generatePassword(passLength, lowercase, digits, special);
 
@@ -302,7 +564,6 @@ public class GUI extends javax.swing.JFrame {
 
         } else if (chkUpperCase.isSelected() & chkSymbol.isSelected()) { //  uppercase and special
             password = passwordGenerator.generatePassword(passLength, uppercase, special);
-
         } else {
         password = passwordGenerator.generatePassword(passLength, lowercase, uppercase, digits, special);
         }
@@ -347,17 +608,28 @@ public class GUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCopy;
     private javax.swing.JButton btnGenerate;
+    private javax.swing.JButton btnLoadPassword;
+    private javax.swing.JButton btnLoadPassword1;
+    private javax.swing.JButton btnLoadPassword3;
+    private javax.swing.JButton btnLoadPassword4;
     private javax.swing.JCheckBox chkLowerCase;
     private javax.swing.JCheckBox chkNumbers;
     private javax.swing.JCheckBox chkSymbol;
     private javax.swing.JCheckBox chkUpperCase;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JLabel lblPass;
     private javax.swing.JLabel lblPass1;
     private javax.swing.JLabel lblSite;
     private javax.swing.JLabel lblUser;
     private javax.swing.JToggleButton see;
+    private javax.swing.JToggleButton see1;
+    private javax.swing.JPasswordField txtPassword2;
+    private javax.swing.JTextField txtWebsite;
     private javax.swing.JPasswordField txtboxPass;
     private javax.swing.JTextField txtboxSite;
     private javax.swing.JTextField txtboxUser;
