@@ -2,6 +2,8 @@
   <library name="flatlaf">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/src/main/resources/flatlaf.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/main/resources/jssc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/main/resources/mysql-connector-j-8.0.31.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
